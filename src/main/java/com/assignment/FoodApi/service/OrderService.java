@@ -29,9 +29,7 @@ public class OrderService {
 
     public Order placeOrder(Order order) {
         for (OrderFood orderFood : order.getOrderFoods()) {
-            // Fetch and set the Food entity
             orderFood.setFood(foodRepository.findById(orderFood.getFood().getId()).orElse(null));
-            // Set the order for the OrderFood entity
             orderFood.setOrder(order);
         }
         return orderRepository.save(order);

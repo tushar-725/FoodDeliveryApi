@@ -21,7 +21,7 @@ public class Order {
     @Column(nullable = false)
     private String paymentStatus = "PENDING";
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true) //one order can have multiple entries in orderFood
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
 //    @JsonIgnore
     @JsonManagedReference
     private List<OrderFood> orderFoods = new ArrayList<>();
