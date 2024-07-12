@@ -1,5 +1,7 @@
 package com.assignment.FoodApi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -19,7 +21,9 @@ public class Order {
     @Column(nullable = false)
     private String paymentStatus = "PENDING";
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL) //one order can have multiple entries in orderFood
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true) //one order can have multiple entries in orderFood
+//    @JsonIgnore
+    @JsonManagedReference
     private List<OrderFood> orderFoods = new ArrayList<>();
 
     public Long getId() {

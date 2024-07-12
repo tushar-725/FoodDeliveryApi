@@ -1,5 +1,6 @@
 package com.assignment.FoodApi.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -8,6 +9,7 @@ public class OrderFood {
 
     @Id
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "order_id")
     private Order order;
 
